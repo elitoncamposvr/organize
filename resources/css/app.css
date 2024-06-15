@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    select{
+        @apply text-gray-800;
+    }
+
+    input[type=text],
+    input[type=password],
+    input[type=email],
+    input[type=tel]{
+        @apply text-gray-800 rounded-md;
+    }
+}
