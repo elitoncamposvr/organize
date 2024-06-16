@@ -8,7 +8,7 @@
                             <x-link-btn :href="route('company.index')">{{ __('Empresas') }}</x-link-btn>
                         </span>
                         <span class="px-2">
-                            <x-link-btn :href="route('users')">{{ __('Planos') }}</x-link-btn>
+                            <x-link-btn :href="route('plans.index')">{{ __('Planos') }}</x-link-btn>
                         </span>
                         <span class="px-2">
                             <x-link-btn :href="route('users')">{{ __('Usuários') }}</x-link-btn>

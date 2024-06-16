@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\PlanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -32,6 +33,13 @@ Route::middleware('auth')->group(function () {
     Route::put('/company/update/{id}', [CompanyController::class, 'update'])->name('company.update');
     Route::get('/company/show/{id}', [CompanyController::class, 'show'])->name('company.show');
     Route::delete('/company/destroy', [CompanyController::class, 'destroy'])->name('company.destroy');
+
+    Route::get('/plans', [PlanController::class, 'index'])->name('plans.index');
+    Route::get('/plans/create', [PlanController::class, 'create'])->name('plans.create');
+    Route::post('/plans/store', [PlanController::class, 'store'])->name('plans.store');
+    Route::get('/plans/edit/{id}', [PlanController::class, 'edit'])->name('plans.edit');
+    Route::put('/plans/update/{id}', [PlanController::class, 'update'])->name('plans.update');
+    Route::delete('/plans/delete', [PlanController::class, 'delete'])->name('plans.delete');
 });
 
 
