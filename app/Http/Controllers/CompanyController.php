@@ -30,7 +30,7 @@ class CompanyController extends Controller
             'phone' => ['required', 'string', 'max:11'],
             'cellphone' => ['required', 'string', 'max:11'],
         ]);
-
+//
         $company = Company::create([
             'company_name' => $request->company_name,
             'cpf_cnpj' => $request->cpf_cnpj,
@@ -42,26 +42,48 @@ class CompanyController extends Controller
 
         event(new Registered($company));
 
-        return redirect(route('company.company', absolute: false));
+        return redirect(route('company.index', absolute: false));
+
+//        dump($request);
     }
 
-    public function show(Company $company)
+    public function show($id)
     {
-        //
+        return view('company.company_show',[
+            'company' => Company::find($id),
+        ]);
     }
 
-    public function edit(Company $company)
+    public function edit($id)
     {
-        //
+        return view('company.company_edit', [
+            'company' => Company::find($id),
+        ]);
     }
 
-    public function update(Request $request, Company $company)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'company_name' => ['required', 'string', 'max:125'],
+            'cpf_cnpj' => ['required', 'string', 'max:255'],
+            'responsible_name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'phone' => ['required', 'string', 'max:11'],
+            'cellphone' => ['required', 'string', 'max:11'],
+        ]);
+
+
+        $company = Company::find($id);
+        $company->update($request->all());
+
+        return redirect(route('company.index', absolute: false));
     }
 
-    public function destroy(Company $company)
+    public function destroy(Request $request)
     {
-        //
+        $company = Company::find($request->id);
+        $company->delete();
+
+        return redirect(route('company.index', absolute: false));
     }
 }

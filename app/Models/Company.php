@@ -12,7 +12,7 @@ class Company extends Model
     protected $fillable = [
         'company_name',
         'cpf_cnpj',
-        'responsible_person',
+        'responsible_name',
         'email',
         'phone',
         'cellphone'

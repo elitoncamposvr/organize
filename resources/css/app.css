@@ -13,4 +13,8 @@
     input[type=tel]{
         @apply text-gray-800 rounded-md;
     }
+
+    .form-destroy{
+        @apply h-5;
+    }
 }

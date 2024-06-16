@@ -15,11 +15,11 @@ return new class extends Migration
             $table->string('cpf_cnpj')->nullable();
             $table->string('responsible_name');
             $table->string('phone')->nullable();
-            $table->string('cellphone')->nullable();
+            $table->string('cellphone');
             $table->string('email');
             $table->integer('plan_id')->default('0');
             $table->boolean('is_active')->default('1');
-            $table->date('access_expiration');
+            $table->date('access_expiration')->nullable();
             $table->timestamps();
         });
     }
