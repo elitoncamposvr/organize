@@ -39,7 +39,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/plans/store', [PlanController::class, 'store'])->name('plans.store');
     Route::get('/plans/edit/{id}', [PlanController::class, 'edit'])->name('plans.edit');
     Route::put('/plans/update/{id}', [PlanController::class, 'update'])->name('plans.update');
-    Route::delete('/plans/delete', [PlanController::class, 'delete'])->name('plans.delete');
+    Route::delete('/plans/destroy', [PlanController::class, 'destroy'])->name('plans.destroy');
 });
 
 

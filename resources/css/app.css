@@ -4,7 +4,7 @@
 
 @layer base {
     select{
-        @apply text-gray-800;
+        @apply text-gray-800 rounded-md;
     }
 
     input[type=text],
@@ -12,6 +12,10 @@
     input[type=email],
     input[type=tel]{
         @apply text-gray-800 rounded-md;
+    }
+
+    textarea{
+        @apply resize-none h-20 rounded-md text-gray-800;
     }
 
 }
