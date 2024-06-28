@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Company;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -14,13 +15,29 @@ class UserController extends Controller
     public function index()
     {
         return view('users', [
-            'users' => User::paginate(20),
+            'users' => User::query()
+                ->select(
+                    'users.id as user_id',
+                    'users.email as user_email',
+                    'users.name as user_name',
+                    'companies.company_name as company_name',
+                    'users.is_admin as user_is_admin',
+                    'users.user_level as user_level',
+                )
+            ->leftJoin('companies', 'users.company_id', '=', 'companies.id')
+            ->paginate(20),
         ]);
     }
 
     public function create()
     {
-        return view('users_create');
+//        $companies = Company::all();
+//
+//        dump($companies);
+
+        return view('users_create', [
+            'companies' => Company::all(),
+        ]);
     }
 
     public function store(Request $request)
@@ -28,12 +45,14 @@ class UserController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'company_id' => ['required'],
             'password' => ['required', Rules\Password::defaults()],
         ]);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'company_id' => $request->company_id,
             'password' => Hash::make($request->password),
         ]);
 
@@ -44,9 +63,9 @@ class UserController extends Controller
 
     public function edit($id)
     {
-        $user = User::find($id);
+
         return view('users_edit', [
-            'users' => $user,
+            'users' => User::find($id),
         ]);
     }
 

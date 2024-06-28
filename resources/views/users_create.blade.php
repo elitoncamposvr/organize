@@ -8,8 +8,18 @@
                         @method('post')
 
                         <div>
+                            <x-input-label for="company_id" :value="__('Empresa')" />
+                            <select name="company_id" id="company_id" class="w-full mt-1" required autofocus>
+                                @foreach($companies as $company)
+                                    <option value="{{ $company->id }}">{{ $company->company_name }}</option>
+                                @endforeach
+                            </select>
+                            <x-input-error class="mt-2" :messages="$errors->get('company_id')" />
+                        </div>
+
+                        <div>
                             <x-input-label for="name" :value="__('Nome')" />
-                            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" required autofocus />
+                            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" required />
                             <x-input-error class="mt-2" :messages="$errors->get('name')" />
                         </div>
 

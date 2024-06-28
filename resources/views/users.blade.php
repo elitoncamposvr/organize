@@ -8,14 +8,14 @@
                     </div>
 
                     <div class="w-full inline-flex border-b py-1.5">
-                        <div class="w-1/12">
-                            Código
-                        </div>
-                        <div class="w-4/12">
+                        <div class="w-3/12">
                             Nome
                         </div>
-                        <div class="w-4/12">
+                        <div class="w-3/12">
                             E-mail
+                        </div>
+                        <div class="w-3/12">
+                            Empresa
                         </div>
                         <div class="w-1/12">
                             Admin
@@ -29,17 +29,17 @@
                     </div>
                     @foreach($users as $user)
                         <div class="w-full inline-flex border-b my-4 dark:border-b-gray-700">
+                            <div class="w-3/12">
+                                {{ $user->user_name }}
+                            </div>
+                            <div class="w-3/12">
+                                {{ $user->user_email }}
+                            </div>
+                            <div class="w-3/12">
+                                {{ $user->company_name }}
+                            </div>
                             <div class="w-1/12">
-                                {{ $user->id }}
-                            </div>
-                            <div class="w-4/12">
-                                {{ $user->name }}
-                            </div>
-                            <div class="w-4/12">
-                                {{ $user->email }}
-                            </div>
-                            <div class="w-1/12">
-                                @if($user->is_admin === 1)
+                                @if($user->user_is_admin === 1)
                                     Sim
                                 @else
                                     Não
@@ -49,7 +49,7 @@
                                 {{ $user->user_level }}
                             </div>
                             <div class="w-1/12 flex items-center justify-evenly">
-                                <a href="{{ route('users.edit', [$user->id]) }}">
+                                <a href="{{ route('users.edit', [$user->user_id]) }}">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                          stroke-width="1.5" stroke="currentColor" class="size-5">
                                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -59,7 +59,7 @@
                                 <form method="post" class="form-destroy" action="{{ route('users.destroy') }}">
                                     @csrf
                                     @method('delete')
-                                    <input type="hidden" name="id" id="id" value="{{ $user->id }}">
+                                    <input type="hidden" name="id" id="id" value="{{ $user->user_id }}">
                                     <button type="submit">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" --}}
                                              stroke-width="1.5" stroke="currentColor" class="size-5">
