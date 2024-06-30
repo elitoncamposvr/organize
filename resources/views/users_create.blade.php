@@ -7,6 +7,11 @@
                         @csrf
                         @method('post')
 
+                        @if(Auth::user()->is_admin === 1)
+                            <input type="hidden" name="user_level" value="1">
+                        @else
+                            <input type="hidden" name="user_level" value="2">
+                        @endif
                         <div>
                             <x-input-label for="company_id" :value="__('Empresa')" />
                             <select name="company_id" id="company_id" class="w-full mt-1" required autofocus>

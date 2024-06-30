@@ -45,8 +45,9 @@ class UserController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-            'company_id' => ['required'],
+            'company_id' => ['required', 'integer'],
             'password' => ['required', Rules\Password::defaults()],
+            'user_level' => ['required', 'integer'],
         ]);
 
         $user = User::create([
@@ -54,6 +55,7 @@ class UserController extends Controller
             'email' => $request->email,
             'company_id' => $request->company_id,
             'password' => Hash::make($request->password),
+            'user_level' => $request->user_level,
         ]);
 
         event(new Registered($user));

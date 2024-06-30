@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\ArchiveController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\FolderArchiveController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
@@ -40,6 +42,17 @@ Route::middleware('auth')->group(function () {
     Route::get('/plans/edit/{id}', [PlanController::class, 'edit'])->name('plans.edit');
     Route::put('/plans/update/{id}', [PlanController::class, 'update'])->name('plans.update');
     Route::delete('/plans/destroy', [PlanController::class, 'destroy'])->name('plans.destroy');
+
+    Route::get('/archives', [ArchiveController::class, 'index'])->name('archives.index');
+
+    Route::get('/folderarchives', [FolderArchiveController::class, 'index'])->name('folderarchives.index');
+    Route::get('/folderarchives/create', [FolderArchiveController::class, 'create'])->name('folderarchives.create');
+    Route::post('/folderarchives/store', [FolderArchiveController::class, 'store'])->name('folderarchives.store');
+    Route::get('/folderarchives/edit/{id}', [FolderArchiveController::class, 'edit'])->name('folderarchives.edit');
+    Route::put('folderarchives/update/{id}', [FolderArchiveController::class, 'update'])->name('folderarchives.update');
+    Route::get('/folderarchives/show/{id}', [FolderArchiveController::class, 'show'])->name('folderarchives.show');
+    Route::delete('/folderarchives/destroy', [FolderArchiveController::class, 'destroy'])->name('folderarchives.destroy');
+
 });
 
 

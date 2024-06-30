@@ -11,6 +11,9 @@
                             <x-link-btn :href="route('plans.index')">{{ __('Planos') }}</x-link-btn>
                         </span>
                         <span class="px-2">
+                            <x-link-btn :href="route('folderarchives.index')">{{ __('Departamentos/Pastas') }}</x-link-btn>
+                        </span>
+                        <span class="px-2">
                             <x-link-btn :href="route('users')">{{ __('Usuários') }}</x-link-btn>
                         </span>
                     </div>

@@ -6,21 +6,25 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    /**
+     * Run the migrations.
+     */
     public function up(): void
     {
-        Schema::create('archives', function (Blueprint $table) {
+        Schema::create('folder_archives', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 255);
+            $table->string('folder_name');
             $table->integer('company_id');
-            $table->integer('user_id');
-            $table->integer('department_id');
-            $table->integer('folder_id');
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }
 
+    /**
+     * Reverse the migrations.
+     */
     public function down(): void
     {
-        Schema::dropIfExists('archives');
+        Schema::dropIfExists('folder_archives');
     }
 };

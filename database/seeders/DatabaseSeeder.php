@@ -22,6 +22,8 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('123456br'),
             'is_admin' => '1',
             'user_level' => '1',
+            'company_id' => '0'
         ]);
+
     }
 }

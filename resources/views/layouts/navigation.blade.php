@@ -10,14 +10,18 @@
                         {{ __('Início') }}
                     </x-nav-link>
                 </div>
-{{--                <div class="hidden space-x-8 px-1.5 sm:-my-px sm:flex">--}}
-{{--                    <x-nav-link :href="route('users')" :active="request()->routeIs('users')">--}}
-{{--                        {{ __('Usuários') }}--}}
-{{--                    </x-nav-link>--}}
-{{--                </div>--}}
+
+                @if(Auth::user()->user_level === 1)
                 <div class="hidden space-x-8 px-1.5 sm:-my-px sm:flex">
                     <x-nav-link :href="route('registers')" :active="request()->routeIs('registers')">
                         {{ __('Cadastros') }}
+                    </x-nav-link>
+                </div>
+                @endif
+
+                <div class="hidden space-x-8 px-1.5 sm:-my-px sm:flex">
+                    <x-nav-link :href="route('archives.index')" :active="request()->routeIs('archives')">
+                        {{ __('Acervo') }}
                     </x-nav-link>
                 </div>
             </div>
