@@ -29,4 +29,9 @@
         @apply w-full flex flex-row py-1.5 mb-2 border-b border-gray-600;
     }
 
+    .card{
+        @apply
+        w-48 h-28 bg-gray-500 px-2 py-3 rounded-md text-center mx-1 hover:bg-gray-700;
+    }
+
 }

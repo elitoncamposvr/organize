@@ -44,6 +44,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/plans/destroy', [PlanController::class, 'destroy'])->name('plans.destroy');
 
     Route::get('/archives', [ArchiveController::class, 'index'])->name('archives.index');
+    Route::get('/archives/list/{id}', [ArchiveController::class, 'list'])->name('archives.list');
+    Route::get('/archives/create', [ArchiveController::class, 'create'])->name('archives.create');
 
     Route::get('/folderarchives', [FolderArchiveController::class, 'index'])->name('folderarchives.index');
     Route::get('/folderarchives/create', [FolderArchiveController::class, 'create'])->name('folderarchives.create');
