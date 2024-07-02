@@ -19,12 +19,15 @@ class ArchiveController extends Controller
     {
         return view('archives.archives_list', [
             'archives' => Archive::query()->where('folder_archive_id', $id)->paginate(30),
+            'folder_id' => $id,
         ]);
     }
 
-    public function create()
+    public function create($id)
     {
-        return view('archives.archives_create');
+        return view('archives.archives_create', [
+            'id' => $id
+        ]);
     }
 
     public function store(Request $request)

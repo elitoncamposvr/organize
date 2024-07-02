@@ -4,7 +4,7 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <div class="w-full pb-1.5 inline-flex justify-end">
-                        <x-link-btn :href="route('archives.create')">{{ __('Novo Arquivo') }}</x-link-btn>
+                        <x-link-btn :href="route('archives.create', [$folder_id])">{{ __('Novo Arquivo') }}</x-link-btn>
                     </div>
 
                     @if(count($archives) > 0)
