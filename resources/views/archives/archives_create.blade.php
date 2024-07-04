@@ -6,6 +6,7 @@
                     <form class="w-full" action="{{ route('archives.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
 
+                        <input type="hidden" name="folder_archive_id" value="{{ $id }}">
                         <div class="w-full border-b border-gray-600 pb-1.5">
                             <label for="filename">Arquivo</label>
                             <input type="file" name="filename" id="filename" class="w-full" required>
