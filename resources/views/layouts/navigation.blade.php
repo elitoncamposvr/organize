@@ -4,6 +4,10 @@
         <div class="flex justify-between h-16">
             <div class="flex">
 
+                <div class="flex items-center">
+                    <img src="{{ asset('images/logo.png') }}" alt="Logo Organize" width="32" class="mr-3">
+                </div>
+
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 px-1.5 sm:-my-px sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
@@ -20,7 +24,7 @@
                 @endif
 
                 <div class="hidden space-x-8 px-1.5 sm:-my-px sm:flex">
-                    <x-nav-link :href="route('archives.index')" :active="request()->routeIs('archives')">
+                    <x-nav-link :href="route('archives.index')" :active="request()->routeIs('archives.index')">
                         {{ __('Acervo') }}
                     </x-nav-link>
                 </div>

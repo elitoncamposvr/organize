@@ -10,7 +10,8 @@
     input[type=text],
     input[type=password],
     input[type=email],
-    input[type=tel]{
+    input[type=tel],
+    input[type=search]{
         @apply text-gray-800 rounded-md;
     }
 
@@ -31,7 +32,7 @@
 
     .card{
         @apply
-        w-48 h-28 bg-gray-500 px-2 py-3 rounded-md text-center mx-1 hover:bg-gray-700;
+        px-2 py-3 rounded-md text-center mx-1 hover:bg-gray-700;
     }
 
 }

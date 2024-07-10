@@ -22,7 +22,10 @@ class ArchiveController extends Controller
     public function list($id)
     {
         return view('archives.archives_list', [
-            'archives' => Archive::query()->where('folder_archive_id', $id)->paginate(30),
+            'archives' => Archive::query()
+                ->where('folder_archive_id', $id)
+                ->leftJoin('users', 'users.id', '=', 'archives.user_id')
+                ->paginate(30),
             'folder_id' => $id,
         ]);
     }
@@ -67,9 +70,29 @@ class ArchiveController extends Controller
 
     }
 
-    public function show(Archive $archive)
+    public function search(Request $request, $folder_id)
     {
-        //
+        $search = $request->get('search');
+        $filter = $request->get('filter_type');
+
+        if($filter == 1) {
+            $results = Archive::where('folder_archive_id', '=', $folder_id)
+                ->where('file_slug', 'like', '%' . $search . '%')
+                ->get();
+        }
+
+        if($filter == 2) {
+            $results = Archive::where('folder_archive_id', '=', $folder_id)
+                ->where('description', 'like', '%' . $search . '%')
+                ->get();
+        }
+
+        return view('archives.archives_search', [
+            'archives_results' => $results,
+            'folder_id' => $folder_id,
+        ]);
+
+        dump($request->filter_type);
     }
 
     public function edit(Archive $archive)

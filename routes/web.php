@@ -47,6 +47,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/archives/list/{id}', [ArchiveController::class, 'list'])->name('archives.list');
     Route::get('/archives/create/{id}', [ArchiveController::class, 'create'])->name('archives.create');
     Route::post('/archives/store', [ArchiveController::class, 'store'])->name('archives.store');
+    Route::get('/archives/search/{id}', [ArchiveController::class, 'search'])->name('archives.search');
 
     Route::get('/folderarchives', [FolderArchiveController::class, 'index'])->name('folderarchives.index');
     Route::get('/folderarchives/create', [FolderArchiveController::class, 'create'])->name('folderarchives.create');

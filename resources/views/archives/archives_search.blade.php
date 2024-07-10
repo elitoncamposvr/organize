@@ -4,7 +4,7 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <div class="w-full pb-1.5 inline-flex justify-end">
-                        <x-link-btn :href="route('archives.create', [$folder_id])">{{ __('Novo Arquivo') }}</x-link-btn>
+                        <x-link-btn :href="route('archives.list', [$folder_id])">{{ __('Voltar a pasta') }}</x-link-btn>
                     </div>
 
                     <div class="w-full flex my-2.5 p-2 bg-gray-700 rounded-md">
@@ -18,7 +18,7 @@
                         </form>
                     </div>
 
-                    @if(count($archives) > 0)
+                    @if(count($archives_results) > 0)
                         <div class="w-full inline-flex border-b py-1.5">
                             <div class="w-3/12 font-semibold">
                                 Nome do Arquivo
@@ -33,7 +33,7 @@
                                 Ações
                             </div>
                         </div>
-                        @foreach($archives as $archive)
+                        @foreach($archives_results as $archive)
                             <div class="w-full inline-flex border-b my-4 dark:border-b-gray-700">
                                 <div class="w-3/12">
                                     {{ $archive->file_slug }}
@@ -59,7 +59,6 @@
                             Nenhum resultado encontrado.
                         </div>
                     @endif
-                    {{ $archives->links() }}
                 </div>
             </div>
         </div>
