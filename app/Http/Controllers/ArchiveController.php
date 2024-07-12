@@ -14,9 +14,12 @@ class ArchiveController extends Controller
 {
     public function index()
     {
+        $user = Auth::user()->company_id;
         return view('archives.archives', [
-            'folders' => FolderArchive::all(),
+            'folders' => FolderArchive::query()->where('company_id', '=', $user)->get(),
         ]);
+
+//        dump($user);
     }
 
     public function list($id)
