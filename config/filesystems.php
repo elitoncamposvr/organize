@@ -46,13 +46,12 @@ return [
 
         's3' => [
             'driver' => 's3',
-            'key' => env('AWS_ACCESS_KEY_ID'),
-            'secret' => env('AWS_SECRET_ACCESS_KEY'),
-            'region' => env('AWS_DEFAULT_REGION'),
-            'bucket' => env('AWS_BUCKET'),
-            'url' => env('AWS_URL'),
-            'endpoint' => env('AWS_ENDPOINT'),
-            'use_path_style_endpoint' => env('AWS_USE_PATH_STYLE_ENDPOINT', false),
+            'key' => env('o3rbEBfZh3zwZMJ9YaGX'),
+            'secret' => env('RQlPaBMA4IrNBYoE8pq7Z3ge6UBcO3BFQjPIg8dR'),
+            'region' => env('ur-or'),
+            'bucket' => env('organize'),
+            'url' => env(' http://localhost:5173/'),
+            'endpoint' => env('l1w5.or.idrivee2-45.com'),
             'throw' => false,
         ],
 

@@ -51,11 +51,13 @@ class ArchiveController extends Controller
 
         $company_id = Auth::user()->company_id;
 
-        $filenameWithExt = $request->file('filename')->getClientOriginalName();
-        $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-        $extension = $request->file('filename')->getClientOriginalExtension();
-        $fileNameToStore= Str::slug($filename).'_'.Auth::user()->id.'_'.time().'.'.$extension;
-        $path = $request->file('filename')->storeAs('public/images/'.$company_id, $fileNameToStore);
+//        $filenameWithExt = $request->file('filename')->getClientOriginalName();
+//        $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+//        $extension = $request->file('filename')->getClientOriginalExtension();
+//        $fileNameToStore= md5(uniqid()).$company_id.Auth::user()->id.time().'.'.$extension;
+//        $path = $request->file('filename')->storeAs('public/images/'.$company_id, $fileNameToStore);
+
+        $path = $request->file('filename')->store('public', 'organize');
 
         $archive = Archive::create([
             'filename' => $fileNameToStore,
