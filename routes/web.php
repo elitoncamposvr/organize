@@ -7,6 +7,7 @@ use App\Http\Controllers\PlanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 Route::get('/', function () {
     return redirect('dashboard');
@@ -57,11 +58,23 @@ Route::middleware('auth')->group(function () {
     Route::get('/folderarchives/show/{id}', [FolderArchiveController::class, 'show'])->name('folderarchives.show');
     Route::delete('/folderarchives/destroy', [FolderArchiveController::class, 'destroy'])->name('folderarchives.destroy');
 
+    Route::get('/teste', function (){
+        echo 'Teste';
+    })->name('teste');
 });
 
+Route::get('/buckets', function(){
+//    $disk = 's3';
+//    $heroImage = Storage::get('hero.png');
+//    $uploadedPath = Storage::disk($disk)->put('hero.png', $heroImage);
+//    return Storage::disk($disk)->url($uploadedPath);
+    return Storage::disk('s3')->put('example.jgp', file_get_contents('https://cdn.pixabay.com/photo/2024/08/06/10/43/wine-8949009_1280.jpg'));
+});
 
 Route::get('/registers', function (){
-    return view('registers');
+    return Storage::disk('s3')->put('example.jgp', file_get_contents('https://cdn.pixabay.com/photo/2024/08/06/10/43/wine-8949009_1280.jpg'));
 })->name('registers');
 
 require __DIR__.'/auth.php';
+
+

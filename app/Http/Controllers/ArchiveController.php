@@ -8,6 +8,7 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class ArchiveController extends Controller
@@ -57,20 +58,33 @@ class ArchiveController extends Controller
 //        $fileNameToStore= md5(uniqid()).$company_id.Auth::user()->id.time().'.'.$extension;
 //        $path = $request->file('filename')->storeAs('public/images/'.$company_id, $fileNameToStore);
 
-        $path = $request->file('filename')->store('public', 'organize');
+//        $request->validate([
+//            'filename' => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
+//        ]);
 
-        $archive = Archive::create([
-            'filename' => $fileNameToStore,
-            'file_slug' => $request->file_slug,
-            'description' => $request->description,
-            'folder_archive_id' => $request->folder_archive_id,
-            'company_id' => Auth::user()->company_id,
-            'user_id' => Auth::user()->id,
-        ]);
+//        $imageName = $request->filename->getClientOriginalName();
+//        $imagePath = 'uploads/' . $imageName;
+//
+//        $path = Storage::disk('idrive')->put($imagePath, file_get_contents($request->image));
+//        $path = Storage::disk('idrive')->url($path);
 
-        event(new Registered($archive));
+//        Storage::disk('s3')->put('filename.txt', 'Conteúdo do arquivo');
+        Storage::disk('s3')->put('example3.jgp', file_get_contents('https://cdn.pixabay.com/photo/2024/08/06/10/43/wine-8949009_1280.jpg'));
 
-        return Redirect::to('archives/list/'.$archive->folder_archive_id);
+//        $contents = Storage::disk('s3_idrive')->get('filename.txt');
+
+//        $archive = Archive::create([
+//            'filename' => $fileNameToStore,
+//            'file_slug' => $request->file_slug,
+//            'description' => $request->description,
+//            'folder_archive_id' => $request->folder_archive_id,
+//            'company_id' => Auth::user()->company_id,
+//            'user_id' => Auth::user()->id,
+//        ]);
+//
+//        event(new Registered($archive));
+//
+//        return Redirect::to('archives/list/'.$archive->folder_archive_id);
 
 
     }
